@@ -1,0 +1,10 @@
+{
+  "name": "nulator",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Zero-dependency static MVP for a browser-based VM manager prototype.",
+  "type": "module",
+  "scripts": {
+    "test": "node --test test/*.test.mjs"
+  }
+}
