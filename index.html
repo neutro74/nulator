@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="nulator is a client-side browser VM manager prototype with a simulated VM lifecycle."
+    />
+    <title>nulator VM Manager</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="shell" aria-label="nulator VM manager">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="brand-mark">N</div>
+          <div>
+            <p class="eyebrow">browser vm lab</p>
+            <h1>nulator</h1>
+          </div>
+        </div>
+
+        <button class="new-vm" id="new-vm-button" type="button">New simulated VM</button>
+
+        <nav class="vm-list" id="vm-list" aria-label="Virtual machines"></nav>
+
+        <section class="sidebar-note">
+          <p class="eyebrow">mvp boundary</p>
+          <p>This preview simulates lifecycle, display, snapshots, and hardware profiling. Real emulation comes later.</p>
+        </section>
+      </aside>
+
+      <section class="workspace">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">local virtualization prototype</p>
+            <h2 id="selected-title">VM Manager</h2>
+          </div>
+          <div class="toolbar" aria-label="VM actions">
+            <button type="button" data-action="start">Start</button>
+            <button type="button" data-action="pause">Pause</button>
+            <button type="button" data-action="resume">Resume</button>
+            <button type="button" data-action="reset">Reset</button>
+            <button type="button" data-action="stop">Stop</button>
+            <button type="button" data-action="snapshot">Snapshot</button>
+            <button type="button" data-action="clone">Clone</button>
+          </div>
+        </header>
+
+        <section class="hero-panel">
+          <div>
+            <p class="eyebrow">selected machine</p>
+            <h3 id="vm-name">Loading...</h3>
+            <p id="vm-summary" class="summary"></p>
+          </div>
+          <div class="status-chip" id="vm-status">stopped</div>
+        </section>
+
+        <section class="grid">
+          <article class="viewer card">
+            <div class="card-header">
+              <div>
+                <p class="eyebrow">viewer</p>
+                <h3>Framebuffer preview</h3>
+              </div>
+              <span id="frame-rate">0 fps</span>
+            </div>
+            <div class="screen" id="screen" aria-live="polite"></div>
+            <div class="viewer-actions">
+              <button type="button" data-action="send-keys">Send Ctrl+Alt+Del</button>
+              <button type="button" data-action="mount">Mount image</button>
+              <button type="button" data-action="fullscreen">Fullscreen</button>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-header">
+              <div>
+                <p class="eyebrow">hardware</p>
+                <h3>Browser profile</h3>
+              </div>
+              <span id="hardware-profile">balanced</span>
+            </div>
+            <dl class="metric-list" id="hardware-metrics"></dl>
+          </article>
+
+          <article class="card">
+            <div class="card-header">
+              <div>
+                <p class="eyebrow">configuration</p>
+                <h3>VM settings</h3>
+              </div>
+            </div>
+            <dl class="metric-list" id="vm-settings"></dl>
+          </article>
+
+          <article class="card">
+            <div class="card-header">
+              <div>
+                <p class="eyebrow">snapshots</p>
+                <h3>Recovery points</h3>
+              </div>
+            </div>
+            <div id="snapshots" class="stack"></div>
+          </article>
+
+          <article class="card wide">
+            <div class="card-header">
+              <div>
+                <p class="eyebrow">debug console</p>
+                <h3>Recent activity</h3>
+              </div>
+              <button type="button" id="reset-inventory">Reset demo inventory</button>
+            </div>
+            <ol class="activity-log" id="activity-log"></ol>
+          </article>
+        </section>
+      </section>
+    </main>
+
+    <script type="module" src="./src/app.mjs"></script>
+  </body>
+</html>
